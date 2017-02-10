@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Swift基本语法之闭包 | Mr.Liu | Write the Code. Change the world.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Swift,闭包">
+    <meta name="description" content="主要内容闭包的介绍闭包和OC中的block非常相似
+   OC中的block是匿名的函数Swift中的闭包是一个特殊的函数block和闭包都经常用于回调   注意:闭包和block一样,第一次使用时可能不习惯它的语法,可以先按照使用简单的闭包,随着学习的深入,慢慢掌握其灵活的运用方法.
+
+闭包的使用block的用法回顾定义网络请求的类12345678910111213141516@interfac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift基本语法之闭包">
+<meta property="og:url" content="http://swift.fit/20170208/SwiftClosures/index.html">
+<meta property="og:site_name" content="Mr.Liu">
+<meta property="og:description" content="主要内容闭包的介绍闭包和OC中的block非常相似
+   OC中的block是匿名的函数Swift中的闭包是一个特殊的函数block和闭包都经常用于回调   注意:闭包和block一样,第一次使用时可能不习惯它的语法,可以先按照使用简单的闭包,随着学习的深入,慢慢掌握其灵活的运用方法.
+
+闭包的使用block的用法回顾定义网络请求的类12345678910111213141516@interfac">
+<meta property="og:updated_time" content="2017-02-09T16:15:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift基本语法之闭包">
+<meta name="twitter:description" content="主要内容闭包的介绍闭包和OC中的block非常相似
+   OC中的block是匿名的函数Swift中的闭包是一个特殊的函数block和闭包都经常用于回调   注意:闭包和block一样,第一次使用时可能不习惯它的语法,可以先按照使用简单的闭包,随着学习的深入,慢慢掌握其灵活的运用方法.
+
+闭包的使用block的用法回顾定义网络请求的类12345678910111213141516@interfac">
+    
+        <link rel="alternative" href="/atom.xml" title="Mr.Liu" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Liu</h5>
+          <a href="mailto:nslog@qq.com" title="nslog@qq.com" class="mail">nslog@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/tiasn" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/tiasn" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://liutianxiang.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                LiuTianXiang
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Swift基本语法之闭包</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Swift基本语法之闭包</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-08T12:05:41.000Z" itemprop="datePublished" class="page-time">
+  2017-02-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Swift/">Swift</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#主要内容"><span class="post-toc-number">1.</span> <span class="post-toc-text">主要内容</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#闭包的介绍"><span class="post-toc-number">2.</span> <span class="post-toc-text">闭包的介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#闭包和OC中的block非常相似"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">闭包和OC中的block非常相似</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#闭包的使用"><span class="post-toc-number">3.</span> <span class="post-toc-text">闭包的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#block的用法回顾"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">block的用法回顾</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义网络请求的类"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">定义网络请求的类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进行网络请求-请求到数据后利用block进行回调"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">进行网络请求,请求到数据后利用block进行回调</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#block写法总结"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">block写法总结:</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用闭包代替block"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用闭包代替block</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义网络请求的类-1"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">定义网络请求的类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进行网络请求-请求到数据后利用闭包进行回调"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">进行网络请求,请求到数据后利用闭包进行回调</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#闭包写法总结"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">闭包写法总结:</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#闭包的简写"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">闭包的简写</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如果闭包没有参数-没有返回值-in和in之前的内容可以省略"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">如果闭包没有参数,没有返回值.in和in之前的内容可以省略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#尾随闭包写法"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">尾随闭包写法:</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#闭包的循环引用"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">闭包的循环引用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#循环引用的-实现"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">循环引用的(实现)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#swift中解决循环引用的方式"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">swift中解决循环引用的方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方案一"><span class="post-toc-number">3.4.2.1.</span> <span class="post-toc-text">方案一:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方案二"><span class="post-toc-number">3.4.2.2.</span> <span class="post-toc-text">方案二:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方案三-常用"><span class="post-toc-number">3.4.2.3.</span> <span class="post-toc-text">方案三:(常用)</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-SwiftClosures"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Swift基本语法之闭包</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月08日 20:05" datetime="2017-02-08T12:05:41.000Z"  itemprop="datePublished">2017-02-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Swift/">Swift</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h1><h1 id="闭包的介绍"><a href="#闭包的介绍" class="headerlink" title="闭包的介绍"></a>闭包的介绍</h1><h2 id="闭包和OC中的block非常相似"><a href="#闭包和OC中的block非常相似" class="headerlink" title="闭包和OC中的block非常相似"></a>闭包和OC中的block非常相似</h2><blockquote>
+<p>   OC中的block是匿名的函数<br>Swift中的闭包是一个特殊的函数<br>block和闭包都经常用于回调<br>   注意:闭包和block一样,第一次使用时可能不习惯它的语法,可以先按照使用简单的闭包,随着学习的深入,慢慢掌握其灵活的运用方法.</p>
+</blockquote>
+<h1 id="闭包的使用"><a href="#闭包的使用" class="headerlink" title="闭包的使用"></a>闭包的使用</h1><h2 id="block的用法回顾"><a href="#block的用法回顾" class="headerlink" title="block的用法回顾"></a>block的用法回顾</h2><h3 id="定义网络请求的类"><a href="#定义网络请求的类" class="headerlink" title="定义网络请求的类"></a>定义网络请求的类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@interface HttpTool : NSObject</div><div class="line">- (void)loadRequest:(void (^)())callBackBlock;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation HttpTool</div><div class="line">- (void)loadRequest:(void (^)())callBackBlock</div><div class="line">&#123;</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        NSLog(@&quot;加载网络数据:%@&quot;, [NSThread currentThread]);</div><div class="line"></div><div class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">            callBackBlock();</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h3 id="进行网络请求-请求到数据后利用block进行回调"><a href="#进行网络请求-请求到数据后利用block进行回调" class="headerlink" title="进行网络请求,请求到数据后利用block进行回调"></a>进行网络请求,请求到数据后利用block进行回调</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    [self.httpTool loadRequest:^&#123;</div><div class="line">        NSLog(@&quot;主线程中,将数据回调.%@&quot;, [NSThread currentThread]);</div><div class="line">    &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="block写法总结"><a href="#block写法总结" class="headerlink" title="block写法总结:"></a>block写法总结:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">block的写法:</div><div class="line">    类型:</div><div class="line">    返回值(^block的名称)(block的参数)</div><div class="line"></div><div class="line">    值:</div><div class="line">    ^(参数列表) &#123;</div><div class="line">        // 执行的代码</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
+<h2 id="使用闭包代替block"><a href="#使用闭包代替block" class="headerlink" title="使用闭包代替block"></a>使用闭包代替block</h2><h3 id="定义网络请求的类-1"><a href="#定义网络请求的类-1" class="headerlink" title="定义网络请求的类"></a>定义网络请求的类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class HttpTool: NSObject &#123;</div><div class="line"></div><div class="line">    func loadRequest(callBack : ()-&gt;())&#123;</div><div class="line">        dispatch_async(dispatch_get_global_queue(0, 0)) &#123; () -&gt; Void in</div><div class="line">            print(&quot;加载数据&quot;, [NSThread.currentThread()])</div><div class="line"></div><div class="line">             dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; Void in</div><div class="line">                callBack()</div><div class="line">             &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="进行网络请求-请求到数据后利用闭包进行回调"><a href="#进行网络请求-请求到数据后利用闭包进行回调" class="headerlink" title="进行网络请求,请求到数据后利用闭包进行回调"></a>进行网络请求,请求到数据后利用闭包进行回调</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">override func touchesBegan(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?) &#123;</div><div class="line">    // 网络请求</div><div class="line">    httpTool.loadRequest (&#123; () -&gt; () in</div><div class="line">        print(&quot;回到主线程&quot;, NSThread.currentThread());</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="闭包写法总结"><a href="#闭包写法总结" class="headerlink" title="闭包写法总结:"></a>闭包写法总结:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">闭包的写法:</div><div class="line">    类型:(形参列表)-&gt;(返回值)</div><div class="line">    技巧:初学者定义闭包类型,直接写()-&gt;().再填充参数和返回值</div><div class="line"></div><div class="line">    值:</div><div class="line">    &#123;</div><div class="line">        (形参) -&gt; 返回值类型 in</div><div class="line">        // 执行代码</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="闭包的简写"><a href="#闭包的简写" class="headerlink" title="闭包的简写"></a>闭包的简写</h2><h3 id="如果闭包没有参数-没有返回值-in和in之前的内容可以省略"><a href="#如果闭包没有参数-没有返回值-in和in之前的内容可以省略" class="headerlink" title="如果闭包没有参数,没有返回值.in和in之前的内容可以省略"></a>如果闭包没有参数,没有返回值.in和in之前的内容可以省略</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">httpTool.loadRequest(&#123;</div><div class="line">       print(&quot;回到主线程&quot;, NSThread.currentThread());</div><div class="line">   &#125;)</div></pre></td></tr></table></figure>
+<h3 id="尾随闭包写法"><a href="#尾随闭包写法" class="headerlink" title="尾随闭包写法:"></a>尾随闭包写法:</h3><blockquote>
+<p>如果闭包是函数的最后一个参数,则可以将闭包写在()后面<br>   如果函数只有一个参数,并且这个参数是闭包,那么()可以不写</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">httpTool.loadRequest() &#123;</div><div class="line">    print(&quot;回到主线程&quot;, NSThread.currentThread());</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 开发中建议该写法</div><div class="line">httpTool.loadRequest &#123;</div><div class="line">    print(&quot;回到主线程&quot;, NSThread.currentThread());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="闭包的循环引用"><a href="#闭包的循环引用" class="headerlink" title="闭包的循环引用"></a>闭包的循环引用</h2><blockquote>
+<pre><code>•如果在HttpTool中有对闭包进行强引用,则会形成循环引用
+ •补充:在Swift中检测一个对象是否销毁,可以实现对象的deinit函数
+</code></pre></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 析构函数(相当于OC中dealloc方法)</div><div class="line">   deinit &#123;</div><div class="line">       print(&quot;ViewController----deinit&quot;)</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="循环引用的-实现"><a href="#循环引用的-实现" class="headerlink" title="循环引用的(实现)"></a>循环引用的(实现)</h3><blockquote>
+<p>该实现是为了产生循环引用,而产生的循环引用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class HttpTool: NSObject &#123;</div><div class="line">    // 定义属性,来强引用传入的闭包</div><div class="line">    var callBack : (()-&gt;())?</div><div class="line">   func loadRequest(callBack : ()-&gt;())&#123;</div><div class="line">        dispatch_async(dispatch_get_global_queue(0, 0)) &#123; () -&gt; Void in</div><div class="line">            print(&quot;加载数据&quot;, [NSThread.currentThread()])</div><div class="line"></div><div class="line">             dispatch_async(dispatch_get_main_queue(), &#123; () -&gt; Void in</div><div class="line">                callBack()</div><div class="line">             &#125;)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        self.callBack = callBack</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="swift中解决循环引用的方式"><a href="#swift中解决循环引用的方式" class="headerlink" title="swift中解决循环引用的方式"></a>swift中解决循环引用的方式</h3><h4 id="方案一"><a href="#方案一" class="headerlink" title="方案一:"></a>方案一:</h4><blockquote>
+<p>使用weak,对当前控制器使用弱引用<br>但是因为self可能有值也可能没有值,因此weakSelf是一个可选类型,在真正使用时可以对其强制解包(该处强制解包没有问题,因为控制器一定存在,否则无法调用所在函数)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 解决方案一:</div><div class="line">   weak var weakSelf = self</div><div class="line">   httpTool.loadData &#123;</div><div class="line">       print(&quot;加载数据完成,更新界面:&quot;, NSThread.currentThread())</div><div class="line">       weakSelf!.view.backgroundColor = UIColor.redColor()</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h4 id="方案二"><a href="#方案二" class="headerlink" title="方案二:"></a>方案二:</h4><blockquote>
+<pre><code>和方案一类型,只是书写方式更加简单
+</code></pre><p>   可以写在闭包中,并且在闭包中用到的self都是弱引用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">httpTool.loadData &#123;[weak self] () -&gt; () in</div><div class="line">       print(&quot;加载数据完成,更新界面:&quot;, NSThread.currentThread())</div><div class="line">       self!.view.backgroundColor = UIColor.redColor()</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h4 id="方案三-常用"><a href="#方案三-常用" class="headerlink" title="方案三:(常用)"></a>方案三:(常用)</h4><blockquote>
+<pre><code>◦    使用关键字`unowned`
+◦    从行为上来说 unowned 更像OC中的 unsafe_unretained
+◦    unowned 表示:即使它原来引用的对象被释放了，仍然会保持对被已经释放了的对象的一个 &quot;无效的&quot; 引用，它不能是 Optional 值，也不会被指向 nil
+</code></pre></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">httpTool.loadData &#123;[unowned self] () -&gt; () in</div><div class="line">        print(&quot;加载数据完成,更新界面:&quot;, NSThread.currentThread())</div><div class="line">        self.view.backgroundColor = UIColor.redColor()</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-09T16:15:58.000Z" itemprop="dateUpdated">2017年2月10日 0:15</time>
+</span><br>
+
+
+        自由转载-非商用-非衍生-保持署名|Mr.Liu ：<a href="/20170208/SwiftClosures/" target="_blank" rel="external">http://swift.fit/20170208/SwiftClosures/</a>
+    </div>
+    <footer>
+        <a href="http://swift.fit">
+            <img src="/img/avatar.jpg" alt="Mr.Liu">
+            Mr.Liu
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://swift.fit/20170208/SwiftClosures/&title=《Swift基本语法之闭包》 — Mr.Liu&pic=http://swift.fit/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://swift.fit/20170208/SwiftClosures/&title=《Swift基本语法之闭包》 — Mr.Liu&source=Write the Code. Change the world." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://swift.fit/20170208/SwiftClosures/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Swift基本语法之闭包》 — Mr.Liu&url=http://swift.fit/20170208/SwiftClosures/&via=http://swift.fit" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://swift.fit/20170208/SwiftClosures/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/20170208/RuntimeGet/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">iOS Runtime 获取成员变量</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="SwiftClosures" data-title="Swift基本语法之闭包" data-url="http://swift.fit/20170208/SwiftClosures/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'liutianxiang', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Mr.Liu &copy; 2012 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://swift.fit/20170208/SwiftClosures/&title=《Swift基本语法之闭包》 — Mr.Liu&pic=http://swift.fit/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://swift.fit/20170208/SwiftClosures/&title=《Swift基本语法之闭包》 — Mr.Liu&source=Write the Code. Change the world." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://swift.fit/20170208/SwiftClosures/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Swift基本语法之闭包》 — Mr.Liu&url=http://swift.fit/20170208/SwiftClosures/&via=http://swift.fit" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://swift.fit/20170208/SwiftClosures/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABy0lEQVR42u3awYrDMAxF0fz/T3dgVgPFnvsiWU3helXSNDnu4mFLvi48Xr/j/fPfK6t7Vt++P6dtyJUrt8x9bceeyL/lU1rdL1eu3HkuCS8SRnzy+wkvr8uVK/dh3H0wVZZKcuXK/V7uPpK66HLlyn0Ot7Io4Qsd/nc07NXkypVb4HYtTSqfh+q7cuXKLXclSKDwMiuPreUz5cqVO8IljZD99bSxmhZkrxQhV67cMre32HG6KStXrtwZLj9cxaG8UEIMKNTkypV7jMsfnS6JeFCS4x1y5co9zeXHrdLFTdo+IfEnV67ceW5a6OTTqzRZg1yUK1duEzfd/BBWemdDw1WuXLkHuDxQ7k0mDal//ji5cuWOcDmlXuiMNzxy5cod55JjFmn08M0S30rJlSt3kntvscKv88gL7pcrV+5hLo8Vsh26N42g3SJXrtxBbvoyfsTqKg+5cuV+issHKWTwkkrQUiXJKleu3CZuGii89JmGHVnoyJUrd5JbCa970cbLrOg0mVy5co9xeUOljmtevsiVK/ej3LTJyhdDwXvlypX7SC4/kMEnQyYmV67ceW7acCXF0PS3KOzkypU7wq0UTHl7hkxDrly5D+D+AL5FgHdhgngvAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
