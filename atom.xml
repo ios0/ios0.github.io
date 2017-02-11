@@ -4,9 +4,9 @@
   <subtitle>Write the Code. Change the world.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://swift.fit/"/>
+  <link href="http://ltx.host/"/>
   <updated>2017-02-10T02:26:32.000Z</updated>
-  <id>http://swift.fit/</id>
+  <id>http://ltx.host/</id>
   
   <author>
     <name>Mr.Liu</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>iOS中float、double类型直接计算导致精度不准确问题</title>
-    <link href="http://swift.fit/20170210/NSDecimalNumber/"/>
-    <id>http://swift.fit/20170210/NSDecimalNumber/</id>
+    <link href="http://ltx.host/20170210/NSDecimalNumber/"/>
+    <id>http://ltx.host/20170210/NSDecimalNumber/</id>
     <published>2017-02-10T01:50:51.000Z</published>
     <updated>2017-02-10T02:26:32.000Z</updated>
     
@@ -40,19 +40,19 @@
     
     </summary>
     
-      <category term="Objective-C" scheme="http://swift.fit/categories/Objective-C/"/>
+      <category term="Objective-C" scheme="http://ltx.host/categories/Objective-C/"/>
     
     
-      <category term="double计算" scheme="http://swift.fit/tags/double%E8%AE%A1%E7%AE%97/"/>
+      <category term="double计算" scheme="http://ltx.host/tags/double%E8%AE%A1%E7%AE%97/"/>
     
-      <category term="精度丢失" scheme="http://swift.fit/tags/%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1/"/>
+      <category term="精度丢失" scheme="http://ltx.host/tags/%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://swift.fit/20170209/hello-world/"/>
-    <id>http://swift.fit/20170209/hello-world/</id>
+    <link href="http://ltx.host/20170209/hello-world/"/>
+    <id>http://ltx.host/20170209/hello-world/</id>
     <published>2017-02-09T10:39:27.000Z</published>
     <updated>2017-02-09T10:39:27.000Z</updated>
     
@@ -78,8 +78,8 @@
   
   <entry>
     <title>Could not get BatchedBridge</title>
-    <link href="http://swift.fit/20170208/BatchedBridge/"/>
-    <id>http://swift.fit/20170208/BatchedBridge/</id>
+    <link href="http://ltx.host/20170208/BatchedBridge/"/>
+    <id>http://ltx.host/20170208/BatchedBridge/</id>
     <published>2017-02-08T12:05:41.000Z</published>
     <updated>2017-02-09T15:18:11.000Z</updated>
     
@@ -92,19 +92,19 @@
     
     </summary>
     
-      <category term="React Native" scheme="http://swift.fit/categories/React-Native/"/>
+      <category term="React Native" scheme="http://ltx.host/categories/React-Native/"/>
     
     
-      <category term="React Native" scheme="http://swift.fit/tags/React-Native/"/>
+      <category term="React Native" scheme="http://ltx.host/tags/React-Native/"/>
     
-      <category term="移动端" scheme="http://swift.fit/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+      <category term="移动端" scheme="http://ltx.host/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>iOS Runtime 获取成员变量</title>
-    <link href="http://swift.fit/20170208/RuntimeGet/"/>
-    <id>http://swift.fit/20170208/RuntimeGet/</id>
+    <link href="http://ltx.host/20170208/RuntimeGet/"/>
+    <id>http://ltx.host/20170208/RuntimeGet/</id>
     <published>2017-02-08T12:05:41.000Z</published>
     <updated>2017-02-09T15:30:35.000Z</updated>
     
@@ -120,19 +120,19 @@
     
     </summary>
     
-      <category term="Objective-C" scheme="http://swift.fit/categories/Objective-C/"/>
+      <category term="Objective-C" scheme="http://ltx.host/categories/Objective-C/"/>
     
     
-      <category term="Runtime" scheme="http://swift.fit/tags/Runtime/"/>
+      <category term="Runtime" scheme="http://ltx.host/tags/Runtime/"/>
     
-      <category term="iOS" scheme="http://swift.fit/tags/iOS/"/>
+      <category term="iOS" scheme="http://ltx.host/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>Swift基本语法之闭包</title>
-    <link href="http://swift.fit/20170208/SwiftClosures/"/>
-    <id>http://swift.fit/20170208/SwiftClosures/</id>
+    <link href="http://ltx.host/20170208/SwiftClosures/"/>
+    <id>http://ltx.host/20170208/SwiftClosures/</id>
     <published>2017-02-08T12:05:41.000Z</published>
     <updated>2017-02-09T16:15:58.000Z</updated>
     
@@ -182,12 +182,12 @@
     
     </summary>
     
-      <category term="Swift" scheme="http://swift.fit/categories/Swift/"/>
+      <category term="Swift" scheme="http://ltx.host/categories/Swift/"/>
     
     
-      <category term="Swift" scheme="http://swift.fit/tags/Swift/"/>
+      <category term="Swift" scheme="http://ltx.host/tags/Swift/"/>
     
-      <category term="闭包" scheme="http://swift.fit/tags/%E9%97%AD%E5%8C%85/"/>
+      <category term="闭包" scheme="http://ltx.host/tags/%E9%97%AD%E5%8C%85/"/>
     
   </entry>
   
