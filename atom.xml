@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ltx.host/"/>
-  <updated>2017-02-10T02:26:32.000Z</updated>
+  <updated>2017-02-13T08:31:48.000Z</updated>
   <id>http://ltx.host/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NavigationBar自动隐藏和显示</title>
+    <link href="http://ltx.host/20170213/NavigationBarHidden/"/>
+    <id>http://ltx.host/20170213/NavigationBarHidden/</id>
+    <published>2017-02-13T01:23:30.000Z</published>
+    <updated>2017-02-13T08:31:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://oe7kg4fev.bkt.clouddn.com/1418694169442773.jpg" alt="LTX.Host" title="">
+                </div>
+                <div class="image-caption">LTX.Host</div>
+            </figure>
+<p>UIScrollView中可以实现以下方法使得NavigationBar根据手势滑动方向自动隐藏或者显示。<br><a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset</div><div class="line">&#123;</div><div class="line">    </div><div class="line">    if(velocity.y &gt; 0) &#123;</div><div class="line">        //上滑 隐藏</div><div class="line">        [self.navigationController setNavigationBarHidden:YES animated:YES];</div><div class="line">    &#125;else &#123;</div><div class="line">        //下滑 显示</div><div class="line">        [self.navigationController setNavigationBarHidden:NO animated:YES];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
+                    &lt;img src=&quot;http://oe7kg4fev.bkt.clouddn.com/1418694169442773.jpg&quot; alt=&quot;LTX.Host&quot; title=&quot;&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;image-caption&quot;&gt;LTX.Host&lt;/div&gt;
+            &lt;/figure&gt;
+&lt;p&gt;UIScrollView中可以实现以下方法使得NavigationBar根据手势滑动方向自动隐藏或者显示。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://ltx.host/categories/Objective-C/"/>
+    
+    
+      <category term="UIScrollView" scheme="http://ltx.host/tags/UIScrollView/"/>
+    
+      <category term="UINavigationBar" scheme="http://ltx.host/tags/UINavigationBar/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS中float、double类型直接计算导致精度不准确问题</title>
@@ -102,34 +142,6 @@
   </entry>
   
   <entry>
-    <title>iOS Runtime 获取成员变量</title>
-    <link href="http://ltx.host/20170208/RuntimeGet/"/>
-    <id>http://ltx.host/20170208/RuntimeGet/</id>
-    <published>2017-02-08T12:05:41.000Z</published>
-    <updated>2017-02-09T15:30:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="首先包含runtime头文件"><a href="#首先包含runtime头文件" class="headerlink" title="首先包含runtime头文件"></a>首先包含runtime头文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;objc/runtime.h&gt;</div></pre></td></tr></table></figure>
-<p>以UITextField为例</p>
-<h2 id="1-遍历所有成员变量"><a href="#1-遍历所有成员变量" class="headerlink" title="1.遍历所有成员变量"></a>1.遍历所有成员变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">+ (void)initialize</div><div class="line">&#123;</div><div class="line">      unsigned int count = 0;</div><div class="line">    </div><div class="line">    // 拷贝出所有的成员变量列表</div><div class="line">    Ivar *ivars = class_copyIvarList([UITextField class], &amp;count);</div><div class="line">    </div><div class="line">    for (int i = 0; i&lt;count; i++) &#123;</div><div class="line">        // 取出成员变量</div><div class="line">        //        Ivar ivar = *(ivars + i);</div><div class="line">        Ivar ivar = ivars[i];</div><div class="line">        </div><div class="line">        // 打印成员变量名字</div><div class="line">        XMGLog(@&quot;%s %s&quot;, ivar_getName(ivar), ivar_getTypeEncoding(ivar));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 释放</div><div class="line">    free(ivars);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="2-遍历所有属性"><a href="#2-遍历所有属性" class="headerlink" title="2.遍历所有属性"></a>2.遍历所有属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">+ (void)initialize</div><div class="line">&#123;</div><div class="line">    unsigned int count = 0;</div><div class="line">    </div><div class="line">    objc_property_t *properties = class_copyPropertyList([UITextField class], &amp;count);</div><div class="line">    </div><div class="line">    for (int i = 0; i&lt;count; i++) &#123;</div><div class="line">        // 取出属性</div><div class="line">        objc_property_t property = properties[i];</div><div class="line">        </div><div class="line">        // 打印属性名字</div><div class="line">        XMGLog(@&quot;%s   &lt;----&gt;   %s&quot;, property_getName(property), property_getAttributes(property));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    free(properties);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;首先包含runtime头文件&quot;&gt;&lt;a href=&quot;#首先包含runtime头文件&quot; class=&quot;headerlink&quot; title=&quot;首先包含runtime头文件&quot;&gt;&lt;/a&gt;首先包含runtime头文件&lt;/h1&gt;&lt;figure class=&quot;highlight 
-    
-    </summary>
-    
-      <category term="Objective-C" scheme="http://ltx.host/categories/Objective-C/"/>
-    
-    
-      <category term="Runtime" scheme="http://ltx.host/tags/Runtime/"/>
-    
-      <category term="iOS" scheme="http://ltx.host/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Swift基本语法之闭包</title>
     <link href="http://ltx.host/20170208/SwiftClosures/"/>
     <id>http://ltx.host/20170208/SwiftClosures/</id>
@@ -188,6 +200,34 @@
       <category term="Swift" scheme="http://ltx.host/tags/Swift/"/>
     
       <category term="闭包" scheme="http://ltx.host/tags/%E9%97%AD%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS Runtime 获取成员变量</title>
+    <link href="http://ltx.host/20170208/RuntimeGet/"/>
+    <id>http://ltx.host/20170208/RuntimeGet/</id>
+    <published>2017-02-08T12:05:41.000Z</published>
+    <updated>2017-02-09T15:30:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="首先包含runtime头文件"><a href="#首先包含runtime头文件" class="headerlink" title="首先包含runtime头文件"></a>首先包含runtime头文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;objc/runtime.h&gt;</div></pre></td></tr></table></figure>
+<p>以UITextField为例</p>
+<h2 id="1-遍历所有成员变量"><a href="#1-遍历所有成员变量" class="headerlink" title="1.遍历所有成员变量"></a>1.遍历所有成员变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">+ (void)initialize</div><div class="line">&#123;</div><div class="line">      unsigned int count = 0;</div><div class="line">    </div><div class="line">    // 拷贝出所有的成员变量列表</div><div class="line">    Ivar *ivars = class_copyIvarList([UITextField class], &amp;count);</div><div class="line">    </div><div class="line">    for (int i = 0; i&lt;count; i++) &#123;</div><div class="line">        // 取出成员变量</div><div class="line">        //        Ivar ivar = *(ivars + i);</div><div class="line">        Ivar ivar = ivars[i];</div><div class="line">        </div><div class="line">        // 打印成员变量名字</div><div class="line">        XMGLog(@&quot;%s %s&quot;, ivar_getName(ivar), ivar_getTypeEncoding(ivar));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 释放</div><div class="line">    free(ivars);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-遍历所有属性"><a href="#2-遍历所有属性" class="headerlink" title="2.遍历所有属性"></a>2.遍历所有属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">+ (void)initialize</div><div class="line">&#123;</div><div class="line">    unsigned int count = 0;</div><div class="line">    </div><div class="line">    objc_property_t *properties = class_copyPropertyList([UITextField class], &amp;count);</div><div class="line">    </div><div class="line">    for (int i = 0; i&lt;count; i++) &#123;</div><div class="line">        // 取出属性</div><div class="line">        objc_property_t property = properties[i];</div><div class="line">        </div><div class="line">        // 打印属性名字</div><div class="line">        XMGLog(@&quot;%s   &lt;----&gt;   %s&quot;, property_getName(property), property_getAttributes(property));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    free(properties);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;首先包含runtime头文件&quot;&gt;&lt;a href=&quot;#首先包含runtime头文件&quot; class=&quot;headerlink&quot; title=&quot;首先包含runtime头文件&quot;&gt;&lt;/a&gt;首先包含runtime头文件&lt;/h1&gt;&lt;figure class=&quot;highlight 
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://ltx.host/categories/Objective-C/"/>
+    
+    
+      <category term="Runtime" scheme="http://ltx.host/tags/Runtime/"/>
+    
+      <category term="iOS" scheme="http://ltx.host/tags/iOS/"/>
     
   </entry>
   
