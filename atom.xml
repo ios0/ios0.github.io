@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ltx.host/"/>
-  <updated>2017-02-15T03:30:57.000Z</updated>
+  <updated>2017-02-15T03:38:19.000Z</updated>
   <id>http://ltx.host/</id>
   
   <author>
@@ -20,14 +20,14 @@
     <link href="http://ltx.host/20170215/BasicsOfSwift01/"/>
     <id>http://ltx.host/20170215/BasicsOfSwift01/</id>
     <published>2017-02-15T01:50:43.000Z</published>
-    <updated>2017-02-15T03:30:57.000Z</updated>
+    <updated>2017-02-15T03:38:19.000Z</updated>
     
     <content type="html"><![CDATA[<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://oe7kg4fev.bkt.clouddn.com/1418694169442773.jpg" alt="Swift" title="">
+                    <img src="http://oe7kg4fev.bkt.clouddn.com/17-2-15/14527201-file_1487129876469_e886.jpg" alt="" title="">
                 </div>
-                <div class="image-caption">Swift</div>
+                <div class="image-caption"></div>
             </figure>
 <p>这篇文章是自己学习Swift的笔记,属于入门教程，介绍Swift基本语法知识，比较枯燥，建议大家使用Playground亲自动手敲一遍，以加深记忆。<br><a id="more"></a></p>
 <h1 id="字符串的使用"><a href="#字符串的使用" class="headerlink" title="字符串的使用"></a>字符串的使用</h1><h2 id="字符串的介绍"><a href="#字符串的介绍" class="headerlink" title="字符串的介绍"></a>字符串的介绍</h2><p><code>1.</code> 字符串在任何的开发中使用都是非常频繁的<br><code>2.</code> OC和Swift中字符串的区别:</p>
