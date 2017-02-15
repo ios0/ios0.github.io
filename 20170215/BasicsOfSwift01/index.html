@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Swift基础知识（一）基本数据类型 | Mr.Liu | Write the Code. Change the world.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Swift基础,基本数据类型">
+    <meta name="description" content="Swift基础知识介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift基础知识（一）基本数据类型">
+<meta property="og:url" content="http://ltx.host/20170215/BasicsOfSwift01/index.html">
+<meta property="og:site_name" content="Mr.Liu">
+<meta property="og:description" content="Swift基础知识介绍">
+<meta property="og:image" content="http://oe7kg4fev.bkt.clouddn.com/1418694169442773.jpg">
+<meta property="og:updated_time" content="2017-02-15T03:30:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift基础知识（一）基本数据类型">
+<meta name="twitter:description" content="Swift基础知识介绍">
+<meta name="twitter:image" content="http://oe7kg4fev.bkt.clouddn.com/1418694169442773.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="Mr.Liu" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Liu</h5>
+          <a href="mailto:nslog@qq.com" title="nslog@qq.com" class="mail">nslog@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/tiasn" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/tiasn" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://liutianxiang.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                LiuTianXiang
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Swift基础知识（一）基本数据类型</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Swift基础知识（一）基本数据类型</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-15T01:50:43.000Z" itemprop="datePublished" class="page-time">
+  2017-02-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Swift/">Swift</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#字符串的使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">字符串的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串的介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">字符串的介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符的定义"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">字符的定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串的使用-1"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">字符串的使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数组的使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">数组的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组的介绍"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">数组的介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组的初始化"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">数组的初始化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对数组的基本操作"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">对数组的基本操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组的遍历"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">数组的遍历</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组的合并"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">数组的合并</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#字典的使用"><span class="post-toc-number">3.</span> <span class="post-toc-text">字典的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字典的介绍"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">字典的介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字典的初始化"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">字典的初始化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字典的基本操作"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">字典的基本操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字典的遍历"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">字典的遍历</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字典的合并"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">字典的合并</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#元组的使用"><span class="post-toc-number">4.</span> <span class="post-toc-text">元组的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元组的介绍"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">元组的介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元组的定义"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">元组的定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元组的简单使用"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">元组的简单使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#可选类型"><span class="post-toc-number">5.</span> <span class="post-toc-text">可选类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可选类型的介绍"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">可选类型的介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义可选类型"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">定义可选类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可选类型的使用"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">可选类型的使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#真实应用场景"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">真实应用场景</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-BasicsOfSwift01"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Swift基础知识（一）基本数据类型</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月15日 9:50" datetime="2017-02-15T01:50:43.000Z"  itemprop="datePublished">2017-02-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Swift/">Swift</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://oe7kg4fev.bkt.clouddn.com/1418694169442773.jpg" alt="Swift" title="">
+                </div>
+                <div class="image-caption">Swift</div>
+            </figure>
+<p>这篇文章是自己学习Swift的笔记,属于入门教程，介绍Swift基本语法知识，比较枯燥，建议大家使用Playground亲自动手敲一遍，以加深记忆。<br><a id="more"></a></p>
+<h1 id="字符串的使用"><a href="#字符串的使用" class="headerlink" title="字符串的使用"></a>字符串的使用</h1><h2 id="字符串的介绍"><a href="#字符串的介绍" class="headerlink" title="字符串的介绍"></a>字符串的介绍</h2><p><code>1.</code> 字符串在任何的开发中使用都是非常频繁的<br><code>2.</code> OC和Swift中字符串的区别:</p>
+<blockquote>
+<p>在OC中字符串类型时NSString,在Swift中字符串类型是String<br>OC中字符串@””,Swift中字符串””</p>
+</blockquote>
+<p><code>3.</code> 使用 String 的原因:</p>
+<blockquote>
+<p>String 是一个结构体，性能更高<br>NSString 是一个 OC 对象，性能略差<br>String 支持直接遍历<br>Swift 提供了 String 和 NSString 之间的无缝转换</p>
+</blockquote>
+<h2 id="字符的定义"><a href="#字符的定义" class="headerlink" title="字符的定义"></a>字符的定义</h2><p><code>*</code> 定义不可变字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 1&gt; 定义不可变字符串 : 使用let修饰</div><div class="line">let str : String = &quot;hello swift&quot;</div><div class="line">// str = &quot;hello Objective-C&quot; 错误写法</div></pre></td></tr></table></figure>
+<p><code>*</code> 定义可变字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 2&gt; 定义可变字符串 : 使用var修饰</div><div class="line">var strM : String = &quot;hello world&quot;</div><div class="line">strM = &quot;hello china&quot;</div></pre></td></tr></table></figure>
+<h2 id="字符串的使用-1"><a href="#字符串的使用-1" class="headerlink" title="字符串的使用"></a>字符串的使用</h2><p><strong>获取字符串的长度</strong><br>获取字符集合,再获取集合的count属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let count = str.characters.count</div></pre></td></tr></table></figure>
+<p><strong>字符串拼接</strong></p>
+<p>1.两个字符串的拼接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let str1 = &quot;Hello&quot;</div><div class="line">let str2 = &quot;World&quot;</div><div class="line">let str3 = str1 + str2</div></pre></td></tr></table></figure></p>
+<p>2.字符串和其他数据类型的拼接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let name = &quot;why&quot;</div><div class="line">let age = 18</div><div class="line"></div><div class="line">let info = &quot;my name is \(name), age is \(age)&quot;</div></pre></td></tr></table></figure></p>
+<p>3.字符串的格式化 比如时间:03:04<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let min = 3</div><div class="line">let second = 4</div><div class="line"></div><div class="line">let time = String(format: &quot;%02d:%02d&quot;, arguments: [min, second])</div></pre></td></tr></table></figure></p>
+<p><strong>字符串的截取</strong><br>1.Swift中提供了特殊的截取方式：</p>
+<blockquote>
+<p>该方式非常麻烦<br>Index创建较为麻烦</p>
+</blockquote>
+<p>2.简单的方式是将String转成NSString来使用</p>
+<blockquote>
+<p>在标识符后加:as NSString即可</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">let urlString = &quot;www.liutianxiang.com&quot;</div><div class="line"></div><div class="line">// Swift中通过 as 关键字可以将String类型转成NSString的类型</div><div class="line">let header1 = (urlString as NSString).substring(to: 3)</div><div class="line">let footer1 = (urlString as NSString).substring(from: 10)</div><div class="line">let range1 = NSRange(location: 4, length: 5)</div><div class="line">let middle1 = (urlString as NSString).substring(with: range1)</div></pre></td></tr></table></figure>
+<p>swift截取方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">let urlString = &quot;www.liutianxiang.com&quot;</div><div class="line"></div><div class="line">let headerIndex = urlString.index(urlString.startIndex, offsetBy: 3)</div><div class="line">let header2 = urlString.substring(to: headerIndex)</div><div class="line"></div><div class="line">let footerIndex = urlString.index(urlString.endIndex, offsetBy: -3)</div><div class="line">let footer2 = urlString.substring(from: footerIndex)</div><div class="line"></div><div class="line">let startIndex = urlString.index(urlString.startIndex, offsetBy: 4)</div><div class="line">let endIndex = urlString.index(urlString.startIndex, offsetBy: 9)</div><div class="line">let range2 = Range(startIndex..&lt;endIndex)</div><div class="line">let middle2 = urlString.substring(with: range2)</div></pre></td></tr></table></figure></p>
+<h1 id="数组的使用"><a href="#数组的使用" class="headerlink" title="数组的使用"></a>数组的使用</h1><h2 id="数组的介绍"><a href="#数组的介绍" class="headerlink" title="数组的介绍"></a>数组的介绍</h2><p><code>1.</code>数组（Array）是一串有序的由相同类型元素构成的集合<br><code>2.</code>数组中的集合元素是有序的，可以重复出现<br><code>3.</code>swift中的数组类型是Array，是一个泛型集合</p>
+<h2 id="数组的初始化"><a href="#数组的初始化" class="headerlink" title="数组的初始化"></a>数组的初始化</h2><p><code>*</code>数组分成:可变数组和不可变数组</p>
+<blockquote>
+<pre><code>◦    使用let修饰的数组是不可变数组
+◦    使用var修饰的数组是可变数组
+</code></pre></blockquote>
+<p>定义不可变数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let array : [Any] = [&quot;why&quot;, 18, 1.88]</div></pre></td></tr></table></figure></p>
+<p>定义可变数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var arrayM = [Any]()</div></pre></td></tr></table></figure></p>
+<h2 id="对数组的基本操作"><a href="#对数组的基本操作" class="headerlink" title="对数组的基本操作"></a>对数组的基本操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 添加数据</div><div class="line">array.append(&quot;yz&quot;)</div><div class="line"></div><div class="line">// 删除元素</div><div class="line">array.removeFirst()</div><div class="line"></div><div class="line">// 修改元素</div><div class="line">array[0] = &quot;why&quot;</div><div class="line"></div><div class="line">// 取值</div><div class="line">array[1]</div></pre></td></tr></table></figure>
+<h2 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 遍历数组</div><div class="line">for i in 0..&lt;array.count &#123;</div><div class="line">    print(array[i])</div><div class="line">&#125;</div><div class="line"></div><div class="line">// forin方式</div><div class="line">for item in array &#123;</div><div class="line">    print(item)</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 设置遍历的区间</div><div class="line">for item in array[0..&lt;2] &#123;</div><div class="line">    print(item)</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 遍历数组的同时获取下标值</div><div class="line">let names = [&quot;why&quot;, &quot;yz&quot;, &quot;lnj&quot;, &quot;lmj&quot;]</div><div class="line">for (index, name) in names.enumerate() &#123;</div><div class="line">    print(index)</div><div class="line">    print(name)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="数组的合并"><a href="#数组的合并" class="headerlink" title="数组的合并"></a>数组的合并</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 数组合并</div><div class="line">// 注意:只有相同类型的数组才能合并</div><div class="line">var array = [&quot;why&quot;, &quot;lmj&quot;,&quot;lnj&quot;]</div><div class="line">var array1 = [&quot;yz&quot;, &quot;wsz&quot;]</div><div class="line">var array2 = array + array1;</div><div class="line"></div><div class="line">// 不建议一个数组中存放多种类型的数据</div><div class="line">var array3 = [2, 3, &quot;why&quot;]</div><div class="line">var array4 = [&quot;yz&quot;, 23]</div><div class="line">array3 + array4</div></pre></td></tr></table></figure>
+<h1 id="字典的使用"><a href="#字典的使用" class="headerlink" title="字典的使用"></a>字典的使用</h1><h2 id="字典的介绍"><a href="#字典的介绍" class="headerlink" title="字典的介绍"></a>字典的介绍</h2><p><code>•</code> 字典允许按照某个键来访问元素<br><code>•</code> 字典是由两部分集合构成的，一个是键（key）集合，一个是值（value）集合<br><code>•</code> 键集合是不能有重复元素的，而值集合是可以重复的，键和值是成对出现的<br><code>•</code> Swift中的字典类型是Dictionary，也是一个泛型集合</p>
+<h2 id="字典的初始化"><a href="#字典的初始化" class="headerlink" title="字典的初始化"></a>字典的初始化</h2><p><code>•</code> Swift中的可变和不可变字典</p>
+<blockquote>
+<p>   ◦  使用let修饰的数组是不可变字典<br>    ◦    使用var修饰的数组是可变字典</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 定义一个可变字典</div><div class="line">var dict1 : [String : Any] = [String : Any]()</div><div class="line"></div><div class="line">// 定义一个不可变字典</div><div class="line">let dict2 : [String : Any] = [&quot;name&quot; : &quot;why&quot;, &quot;age&quot; : 18]</div></pre></td></tr></table></figure>
+<h2 id="字典的基本操作"><a href="#字典的基本操作" class="headerlink" title="字典的基本操作"></a>字典的基本操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 添加数据</div><div class="line">dict[&quot;height&quot;] = 1.88</div><div class="line">dict[&quot;weight&quot;] = 70.0</div><div class="line">dict</div><div class="line"></div><div class="line">// 删除字段</div><div class="line">dict.removeValueForKey(&quot;height&quot;)</div><div class="line">dict</div><div class="line"></div><div class="line">// 修改字典</div><div class="line">dict[&quot;name&quot;] = &quot;lmj&quot;</div><div class="line">dict.updateValue(&quot;lmj&quot;, forKey: &quot;name&quot;)</div><div class="line">dict</div><div class="line"></div><div class="line">// 查询字典</div><div class="line">dict[&quot;name&quot;]</div></pre></td></tr></table></figure>
+<h2 id="字典的遍历"><a href="#字典的遍历" class="headerlink" title="字典的遍历"></a>字典的遍历</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 遍历字典中所有的值</div><div class="line">for value in dict.values &#123;</div><div class="line">    print(value)</div><div class="line">&#125;</div><div class="line">// 遍历字典中所有的键</div><div class="line">for key in dict.keys &#123;</div><div class="line">    print(key)</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 遍历所有的键值对</div><div class="line">for (key, value) in dict &#123;</div><div class="line">    print(key)</div><div class="line">    print(value)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="字典的合并"><a href="#字典的合并" class="headerlink" title="字典的合并"></a>字典的合并</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 字典的合并</div><div class="line">var dict1 = [&quot;name&quot; : &quot;yz&quot;, &quot;age&quot; : 20]</div><div class="line">var dict2 = [&quot;height&quot; : 1.87, &quot;phoneNum&quot; : &quot;+86 110&quot;]</div><div class="line">// 字典不可以相加合并</div><div class="line">for (key, value) in dict1 &#123;</div><div class="line">    dict2[key] = value</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="元组的使用"><a href="#元组的使用" class="headerlink" title="元组的使用"></a>元组的使用</h1><h2 id="元组的介绍"><a href="#元组的介绍" class="headerlink" title="元组的介绍"></a>元组的介绍</h2><p><code>•</code> 元组是Swift中特有的,OC中并没有相关类型<br><code>•</code> 它是什么呢?</p>
+<blockquote>
+<p>它是一种数据结构，在数学中应用广泛<br>  类似于数组或者字典<br>  可以用于定义一组数据<br>  组成元组类型的数据可以称为“元素”</p>
+</blockquote>
+<h2 id="元组的定义"><a href="#元组的定义" class="headerlink" title="元组的定义"></a>元组的定义</h2><p><code>•</code> 元组的常见写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 使用元组描述一个人的信息</div><div class="line">(&quot;1001&quot;, &quot;张三&quot;, 30, 90)</div><div class="line">// 给元素加上元素名称,之后可以通过元素名称访问元素</div><div class="line">(id:&quot;1001&quot;, name:&quot;张三&quot;, english_score:30, chinese_score:90)</div></pre></td></tr></table></figure></p>
+<h2 id="元组的简单使用"><a href="#元组的简单使用" class="headerlink" title="元组的简单使用"></a>元组的简单使用</h2><p><code>•</code> 用元组来描述一个HTTP的错误信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 元组:HTTP错误</div><div class="line">// let array = [404, &quot;Not Found&quot;]</div><div class="line">// 写法一:</div><div class="line">let error = (404, &quot;Not Found&quot;)</div><div class="line">print(error.0)</div><div class="line">print(error.1)</div><div class="line"></div><div class="line">// 写法二:</div><div class="line">let error = (errorCode : 404, errorInfo : &quot;Not Found&quot;)</div><div class="line">print(error.errorCode)</div><div class="line">print(error.errorInfo)</div><div class="line"></div><div class="line">// 写法三:</div><div class="line">let (errorCode, errorIno) = (404, &quot;Not Found&quot;)</div><div class="line">print(errorCode)</div><div class="line">print(errorIno)</div></pre></td></tr></table></figure></p>
+<h1 id="可选类型"><a href="#可选类型" class="headerlink" title="可选类型"></a>可选类型</h1><h2 id="可选类型的介绍"><a href="#可选类型的介绍" class="headerlink" title="可选类型的介绍"></a>可选类型的介绍</h2><p><strong>注意</strong><br>    ◦    可选类型时swift中较理解的一个知识点<br>    ◦    暂时先了解,多利用Xcode的提示来使用<br>    ◦    随着学习的深入,慢慢理解其中的原理和好处<br><strong>概念:</strong><br>    ◦    在OC开发中,如果一个变量暂停不使用,可以赋值为0(基本属性类型)或者赋值为空(对象类型)<br>    ◦    在swift开发中,nil也是一个特殊的类型.因为和真实的类型不匹配是不能赋值的(swift是强类型语言)<br>    ◦    但是开发中赋值nil,在所难免.因此推出了可选类型<br><strong>可选类型的取值:</strong><br>    ◦    空值<br>    ◦    有值</p>
+<h2 id="定义可选类型"><a href="#定义可选类型" class="headerlink" title="定义可选类型"></a>定义可选类型</h2><p>定义一个可选类型有两种写法<br>    ◦    最基本的写法<br>    ◦    语法糖(常用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 错误写法</div><div class="line">// let string : String = nil</div><div class="line">// 正确写法:</div><div class="line">// 注意:name的类型是一个可选类型,但是该可选类型中可以存放字符串.</div><div class="line">// 写法一:定义可选类型</div><div class="line">let name : Optional&lt;String&gt; = nil</div><div class="line"></div><div class="line">// 写法二:定义可选类型,语法糖(常用)</div><div class="line">let name : String? = nil</div></pre></td></tr></table></figure></p>
+<h2 id="可选类型的使用"><a href="#可选类型的使用" class="headerlink" title="可选类型的使用"></a>可选类型的使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">// 演练一:给可选类型赋值</div><div class="line">// 定义可选类型</div><div class="line">var string : Optional&lt;String&gt; = nil</div><div class="line"></div><div class="line">// 给可选类型赋值</div><div class="line">// 错误写法:因此该可选类型中只能存放字符串</div><div class="line">string = 123</div><div class="line">// 正确写法:</div><div class="line">string = &quot;Hello world&quot;</div><div class="line"></div><div class="line">// 打印结果</div><div class="line">print(string)</div><div class="line">// 结果:Optional(&quot;Hello world&quot;)\n</div><div class="line">// 因为打印出来的是可选类型,所有会带Optional</div><div class="line"></div><div class="line"></div><div class="line">// 演练二:取出可选类型的值</div><div class="line">// 取出可选类型的真实值(解包)</div><div class="line">print(string!)</div><div class="line">// 结果:Hello world\n</div><div class="line"></div><div class="line">// 注意:如果可选类型为nil,强制取出其中的值(解包),会出错</div><div class="line">string = nil</div><div class="line">print(string!) // 报错</div><div class="line"></div><div class="line">// 正确写法:</div><div class="line">if string != nil &#123;</div><div class="line">    print(string!)</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 简单写法:为了让在if语句中可以方便使用string</div><div class="line">// 可选绑定</div><div class="line">if let str = string &#123;</div><div class="line">    print(str)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="真实应用场景"><a href="#真实应用场景" class="headerlink" title="真实应用场景"></a>真实应用场景</h2><p>目的: 让代码更加严谨<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 1.将字符串类型转成Int类型</div><div class="line">let str = &quot;123&quot;</div><div class="line">let result : Int? = Int(str) // nil/Int</div><div class="line"></div><div class="line"></div><div class="line">// 2.根据文件名称,读取路径</div><div class="line">let path : String? = Bundle.main.path(forResource: &quot;123.plist&quot;, ofType: nil)</div><div class="line"></div><div class="line"></div><div class="line">// 3.根据string,创建URL</div><div class="line">let url = URL(string: &quot;http://www.520it.com/小码哥&quot;)</div><div class="line"></div><div class="line"></div><div class="line">// 4.从字典中取内容</div><div class="line">let dict : [String : Any] = [&quot;name&quot; : &quot;why&quot;, &quot;age&quot; : 18]</div><div class="line">dict[&quot;name&quot;]</div><div class="line">dict[&quot;height&quot;]</div></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-15T03:30:57.000Z" itemprop="dateUpdated">2017年2月15日 11:30</time>
+</span><br>
+
+
+        自由转载-非商用-非衍生-保持署名|Mr.Liu ：<a href="/20170215/BasicsOfSwift01/" target="_blank" rel="external">http://ltx.host/20170215/BasicsOfSwift01/</a>
+    </div>
+    <footer>
+        <a href="http://ltx.host">
+            <img src="/img/avatar.jpg" alt="Mr.Liu">
+            Mr.Liu
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift基础/">Swift基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基本数据类型/">基本数据类型</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ltx.host/20170215/BasicsOfSwift01/&title=《Swift基础知识（一）基本数据类型》 — Mr.Liu&pic=http://ltx.host/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ltx.host/20170215/BasicsOfSwift01/&title=《Swift基础知识（一）基本数据类型》 — Mr.Liu&source=
+                
+                    
+                    
+                
+..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ltx.host/20170215/BasicsOfSwift01/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Swift基础知识（一）基本数据类型》 — Mr.Liu&url=http://ltx.host/20170215/BasicsOfSwift01/&via=http://ltx.host" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ltx.host/20170215/BasicsOfSwift01/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/20170213/NavigationBarHidden/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">NavigationBar自动隐藏和显示</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="BasicsOfSwift01" data-title="Swift基础知识（一）基本数据类型" data-url="http://ltx.host/20170215/BasicsOfSwift01/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'liutianxiang', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Mr.Liu &copy; 2012 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ltx.host/20170215/BasicsOfSwift01/&title=《Swift基础知识（一）基本数据类型》 — Mr.Liu&pic=http://ltx.host/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ltx.host/20170215/BasicsOfSwift01/&title=《Swift基础知识（一）基本数据类型》 — Mr.Liu&source=
+                
+                    
+                    
+                
+..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ltx.host/20170215/BasicsOfSwift01/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Swift基础知识（一）基本数据类型》 — Mr.Liu&url=http://ltx.host/20170215/BasicsOfSwift01/&via=http://ltx.host" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ltx.host/20170215/BasicsOfSwift01/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzElEQVR42u3aS47CQAwFQO5/6cwWienw7P6gSJXVKIOSgoVl+/XrFV/X29X7/OjOa8eFi4s7zb1ur89Hf77m/s4IfX9/+APh4uIe5I4qRl50EkS1qOHi4j6FWy1z90UTFxf36dxqKzM/COHi4v6Wmww/I25S2vLnL5vVcHFxJ7j5lnLf31v2u7i4uC3uVbyqYUnvLcO34+LiHuH2opTegiMZcqIRCBcX9wh3VbPSo1cjW1xc3N3cHWUoL1XVNQouLu4Zbu+h+aPz1Wd19MLFxd3NnWlWktVJNbKNkh9cXNxt3CTM6B2VSFYq1UYKFxf3t9zq+rK6Zs2L1z+zGi4u7mZur02ZiV3z53/Z7OLi4m7jJi1OXuCqA08e7n6pu7i4uEu5zcpXvN9MffPfAxcXdwN3JlLtLVDmI1tcXNzd3GqTETUixQC1HLLi4uIe4eZrzd6xibyOfvkMLi7uZm6vlORr0HzBGv0XFxf3CHfVqrS31Kge/MLFxT3JnWlQqqFsNbIdRq24uLhHuHnEkrc7M20KLi7us7ir4pPqsS1cXNyncOePdyQDz7JChouLW+TuGH6qbVC0cMHFxT3CnRlFki+ZhyuL97u4uLgd7h+7JSn4fX5QcAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
