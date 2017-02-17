@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ltx.host/"/>
-  <updated>2017-02-15T08:11:12.000Z</updated>
+  <updated>2017-02-17T07:16:05.000Z</updated>
   <id>http://ltx.host/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UITextView 自定义显示效果和链接</title>
+    <link href="http://ltx.host/20170217/UITextViewCus/"/>
+    <id>http://ltx.host/20170217/UITextViewCus/</id>
+    <published>2017-02-17T08:20:43.000Z</published>
+    <updated>2017-02-17T07:16:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://oe7kg4fev.bkt.clouddn.com/17-2-17/32102891-file_1487315404695_154b3.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>由于UITextView自带属性UIDataDetectorTypeLink不能准确的识别URL（链接前后带中文会识别成一个长链接），本文介绍如何自定义UITextView效果和链接</p>
+<a id="more"></a>
+<h1 id="UITextView-自定义"><a href="#UITextView-自定义" class="headerlink" title="UITextView 自定义"></a>UITextView 自定义</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">    NSString *content = @&quot;WWDC将于2017年6月5日至9日在美国加利福尼亚州圣何塞的McEnery会议中心举行。要注册，您必须是截至2月16日，太平洋标准时间上午5:30的Apple开发者计划或Apple开发人员企业计划的成员。http://www.apple.com/您的会员资格必须是有效的，并且从此日期直到WWDC结束，信誉良好。13至17岁的开发商必须由其合格会员的父母或监护人完成提交。如果您选择此选项，则与您的Apple ID相关联的默认信用卡/借记卡将自动收取1599美元，或以可用的当地货币计算。&quot;;</div><div class="line"></div><div class="line"></div><div class="line">    //正则匹配链接</div><div class="line">    NSError *error;</div><div class="line">    NSString *regulaStr = @&quot;((http[s]&#123;0,1&#125;|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]&#123;2,4&#125;)(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&amp;*+?:_/=&lt;&gt;]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]&#123;2,4&#125;)(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&amp;*+?:_/=&lt;&gt;]*)?)&quot;;</div><div class="line"></div><div class="line">    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&amp;error];</div><div class="line"></div><div class="line">    NSArray *arrayOfAllMatches = [regex matchesInString:content options:0 range:NSMakeRange(0, [content length])];</div><div class="line"></div><div class="line"></div><div class="line">    //保存链接 和 链接的Range</div><div class="line">    NSMutableArray *allUrlArray = [NSMutableArray array];</div><div class="line">    NSMutableArray *allRange = [NSMutableArray array];</div><div class="line"></div><div class="line">    for (NSTextCheckingResult *match in arrayOfAllMatches)</div><div class="line">    &#123;</div><div class="line">        NSMutableString *urlStr = [NSMutableString stringWithString:[content substringWithRange:match.range]];</div><div class="line">        [allUrlArray addObject:urlStr];</div><div class="line">        [allRange addObject:match];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //self.contentTextView.dataDetectorTypes = UIDataDetectorTypeLink;</div><div class="line">    self.textView.editable = NO;</div><div class="line">    self.textView.delegate = self;</div><div class="line"></div><div class="line">    //设置样式</div><div class="line">    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];</div><div class="line">    [paragraphStyle setLineSpacing:8];//调整行间距</div><div class="line"></div><div class="line">    //文本属性</div><div class="line">    NSDictionary *subAttDic = @&#123;</div><div class="line">                                NSForegroundColorAttributeName:[UIColor blackColor],</div><div class="line">                                NSFontAttributeName:  [UIFont systemFontOfSize:14],</div><div class="line">                                //      NSKernAttributeName:@3.0f,//调整字与字间距</div><div class="line">                                NSParagraphStyleAttributeName:paragraphStyle</div><div class="line">                                &#125;;</div><div class="line"></div><div class="line">    //链接属性</div><div class="line">    NSDictionary *linkAttDic = @&#123;</div><div class="line">                                 NSForegroundColorAttributeName:[UIColor blueColor],</div><div class="line">                                 NSParagraphStyleAttributeName:paragraphStyle,</div><div class="line">                                 &#125;;</div><div class="line"></div><div class="line">    NSMutableAttributedString *newString = [[NSMutableAttributedString alloc] initWithString: content];</div><div class="line">    [newString addAttributes:subAttDic range:(NSRange)&#123;0, content.length&#125;];</div><div class="line"></div><div class="line">    // 检测到有链接 添加高亮颜色和链接属性</div><div class="line">    if (allRange.count &gt; 0) &#123;</div><div class="line"></div><div class="line">        for (int i = 0; i&lt;allRange.count; i++) &#123;</div><div class="line"></div><div class="line">            NSTextCheckingResult *match = allRange[i];</div><div class="line">            NSURL *url = [NSURL URLWithString:allUrlArray[i]];</div><div class="line"></div><div class="line">            [newString addAttributes:linkAttDic range:match.range];</div><div class="line">            [newString addAttribute:NSLinkAttributeName value:url range:match.range];</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //赋值 设置好属性的字符串</div><div class="line">    self.textView.attributedText = newString;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">// 点击了内容中的链接 加载webView</div><div class="line">- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange</div><div class="line">&#123;</div><div class="line"></div><div class="line">    //自定义跳转控制器 或者自动跳转外部浏览器</div><div class="line"></div><div class="line">    return NO;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="其他常用熟悉"><a href="#其他常用熟悉" class="headerlink" title="其他常用熟悉"></a>其他常用熟悉</h1><p>// NSFontAttributeName                设置字体属性，默认值：字体：Helvetica(Neue) 字号：12<br>// NSForegroundColorAttributeNam      设置字体颜色，取值为 UIColor对象，默认值为黑色<br>// NSBackgroundColorAttributeName     设置字体所在区域背景颜色，取值为 UIColor对象，默认值为nil, 透明色<br>// NSLigatureAttributeName            设置连体属性，取值为NSNumber 对象(整数)，0 表示没有连体字符，1 表示使用默认的连体字符<br>// NSKernAttributeName                设定字符间距，取值为 NSNumber 对象（整数），正值间距加宽，负值间距变窄<br>// NSStrikethroughStyleAttributeName  设置删除线，取值为 NSNumber 对象（整数）<br>// NSStrikethroughColorAttributeName  设置删除线颜色，取值为 UIColor 对象，默认值为黑色<br>// NSUnderlineStyleAttributeName      设置下划线，取值为 NSNumber 对象（整数），枚举常量 NSUnderlineStyle中的值，与删除线类似<br>// NSUnderlineColorAttributeName      设置下划线颜色，取值为 UIColor 对象，默认值为黑色<br>// NSStrokeWidthAttributeName         设置笔画宽度，取值为 NSNumber 对象（整数），负值填充效果，正值中空效果<br>// NSStrokeColorAttributeName         填充部分颜色，不是字体颜色，取值为 UIColor 对象<br>// NSShadowAttributeName              设置阴影属性，取值为 NSShadow 对象<br>// NSTextEffectAttributeName          设置文本特殊效果，取值为 NSString 对象，目前只有图版印刷效果可用：<br>// NSBaselineOffsetAttributeName      设置基线偏移值，取值为 NSNumber （float）,正值上偏，负值下偏<br>// NSObliquenessAttributeName         设置字形倾斜度，取值为 NSNumber （float）,正值右倾，负值左倾<br>// NSExpansionAttributeName           设置文本横向拉伸属性，取值为 NSNumber （float）,正值横向拉伸文本，负值横向压缩文本<br>// NSWritingDirectionAttributeName    设置文字书写方向，从左向右书写或者从右向左书写<br>// NSVerticalGlyphFormAttributeName   设置文字排版方向，取值为 NSNumber 对象(整数)，0 表示横排文本，1 表示竖排文本<br>// NSLinkAttributeName                设置链接属性，点击后调用浏览器打开指定URL地址<br>// NSAttachmentAttributeName          设置文本附件,取值为NSTextAttachment对象,常用于文字图片混排<br>// NSParagraphStyleAttributeName      设置文本段落排版格式，取值为 NSParagraphStyle 对象</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
+                    &lt;img src=&quot;http://oe7kg4fev.bkt.clouddn.com/17-2-17/32102891-file_1487315404695_154b3.jpg&quot; alt=&quot;&quot; title=&quot;&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;image-caption&quot;&gt;&lt;/div&gt;
+            &lt;/figure&gt;
+&lt;p&gt;由于UITextView自带属性UIDataDetectorTypeLink不能准确的识别URL（链接前后带中文会识别成一个长链接），本文介绍如何自定义UITextView效果和链接&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://ltx.host/categories/Objective-C/"/>
+    
+    
+      <category term="UITextView" scheme="http://ltx.host/tags/UITextView/"/>
+    
+  </entry>
   
   <entry>
     <title>Swift基础知识(二) 函数、类等</title>
@@ -251,7 +291,7 @@
     <link href="http://ltx.host/20170210/NSDecimalNumber/"/>
     <id>http://ltx.host/20170210/NSDecimalNumber/</id>
     <published>2017-02-10T01:50:51.000Z</published>
-    <updated>2017-02-10T02:26:32.000Z</updated>
+    <updated>2017-02-16T02:42:44.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>做金融类App开发，经常涉及到Money的计算问题，特别是在算利息这种情况时会遇到除不尽导致小数位数过多的问题。</p>
@@ -261,6 +301,7 @@
 <p>可以看到，经过计算的金额转成NSNumber类型后精度不准确，这不是我们想要的结果！</p>
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//        //申请提现金额</div><div class="line">//   NSDecimalNumber *balance = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@&quot;%@&quot;, _withDrawView.balanceField.text]];</div><div class="line">//        //手续费</div><div class="line">//    NSDecimalNumber* brokerage = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@&quot;%f&quot;,1.00]];</div><div class="line">//        //预计到账金额 (申请提现金额 - 手续费)</div><div class="line">//    NSDecimalNumber* finalBalance = [balance decimalNumberBySubtracting:brokerage];</div><div class="line">//</div><div class="line">//</div><div class="line">//    DLog(@&quot;申请金额:%@   预计到账金额:%@&quot;,balance, finalBalance);</div><div class="line"></div><div class="line">// 输入金额为10.21后输出结果    申请金额:10.21   预计到账金额:9.21</div></pre></td></tr></table></figure>
 <p>这就对了，开发中我们可以把float、double转成NSDecimalNumber类型后再进行+、-、* 、/ 的运算。</p>
+<p><strong>NSDecimalNumber是NSNumber的子类，比NSNumber的功能更为强大，可以指定一个数的幂，四舍五入等操作。由于NSDecimalNumber精度较高，所以会比基本数据类型费时，所以需要权衡考虑，苹果官方建议在货币以及要求精度很高的场景下使用。</strong></p>
 ]]></content>
     
     <summary type="html">
