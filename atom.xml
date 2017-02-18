@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ltx.host/"/>
-  <updated>2017-02-18T08:34:58.000Z</updated>
+  <updated>2017-02-18T08:40:41.000Z</updated>
   <id>http://ltx.host/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ltx.host/20170218/BasicsOfSwift03/"/>
     <id>http://ltx.host/20170218/BasicsOfSwift03/</id>
     <published>2017-02-18T07:50:43.000Z</published>
-    <updated>2017-02-18T08:34:58.000Z</updated>
+    <updated>2017-02-18T08:40:41.000Z</updated>
     
     <content type="html"><![CDATA[<figure class="image-bubble">
                 <div class="img-lightbox">
@@ -31,7 +31,7 @@
             </figure>
 <p>本文主要介绍Swift中循环引用、可选链使用、协议的使用、懒加载、闭包等内容</p>
 <a id="more"></a>
-<h1 id="循环引用问题"><a href="#循环引用问题" class="headerlink" title="循环引用问题"></a>循环引用问题</h1><h2 id="自动引用计数"><a href="#自动引用计数" class="headerlink" title="自动引用计数"></a>自动引用计数</h2><h3 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h3><p>•    Swift和OC一样,采用自动引用计数来管理内容<br>◦    当有一个强引用指向某一个动向时,该对象的引用计数会自动+1<br>◦    当该强引用消失时,引用计数会自动-1<br>◦    当引用计数为0时,该对象会被销毁</p>
+<h1 id="循环引用问题"><a href="#循环引用问题" class="headerlink" title="循环引用问题"></a>循环引用问题</h1><h2 id="自动引用计数"><a href="#自动引用计数" class="headerlink" title="自动引用计数"></a>自动引用计数</h2><h3 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h3><p>•    Swift和OC一样,采用自动引用计数来管理内容<br>◦    当有一个强引用指向某一个动向时,该对象的引用计数会自动 +1<br>◦    当该强引用消失时,引用计数会自动 -1<br>◦    当引用计数为0时,该对象会被销毁</p>
 <h3 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h3><p>•    在通常情况下,ARC是会自动帮助我们管理内存的<br>•    但是在开发中我们经常会出现循环引用的问题,比如下面的示例<br>◦    Student对Book对象有一个强引用<br>◦    而Book对Student有一个强引用<br>◦    在两个对象都指向nil时,依然不会被销毁,就形成了循环引用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">// 1.创建类</div><div class="line">class Student &#123;</div><div class="line">    var book : Book?</div><div class="line"></div><div class="line">    deinit &#123;</div><div class="line">        print(&quot;Student -- deinit&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Book &#123;</div><div class="line">    var owner : Student?</div><div class="line"></div><div class="line">    deinit &#123;</div><div class="line">        print(&quot;Book -- deinit&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2.创建对象</div><div class="line">var stu : Student? = Student()</div><div class="line">var book : Book? = Book()</div><div class="line"></div><div class="line">// 3.相互引用</div><div class="line">stu?.book = book</div><div class="line">book?.owner = stu</div><div class="line"></div><div class="line">// 4.对象置nil</div><div class="line">stu = nil</div><div class="line">book = nil</div><div class="line"></div><div class="line">发现对象并没有被释放</div></pre></td></tr></table></figure>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><code>1.</code> swift提供了两种解决方案<br><code>2.</code>    weak : 和OC中的<strong>weak一样是一个弱引用.当指向的对象销毁时,会自动将指针指向nil<br><code>3.</code>    unowned : 和OC中的</strong>unsafe_unretained.当对象销毁时依然指向原来的位置(容易引起野指针)</p>
@@ -449,34 +449,6 @@
   </entry>
   
   <entry>
-    <title>iOS Runtime 获取成员变量</title>
-    <link href="http://ltx.host/20170208/RuntimeGet/"/>
-    <id>http://ltx.host/20170208/RuntimeGet/</id>
-    <published>2017-02-08T12:05:41.000Z</published>
-    <updated>2017-02-09T15:30:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="首先包含runtime头文件"><a href="#首先包含runtime头文件" class="headerlink" title="首先包含runtime头文件"></a>首先包含runtime头文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;objc/runtime.h&gt;</div></pre></td></tr></table></figure>
-<p>以UITextField为例</p>
-<h2 id="1-遍历所有成员变量"><a href="#1-遍历所有成员变量" class="headerlink" title="1.遍历所有成员变量"></a>1.遍历所有成员变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">+ (void)initialize</div><div class="line">&#123;</div><div class="line">      unsigned int count = 0;</div><div class="line">    </div><div class="line">    // 拷贝出所有的成员变量列表</div><div class="line">    Ivar *ivars = class_copyIvarList([UITextField class], &amp;count);</div><div class="line">    </div><div class="line">    for (int i = 0; i&lt;count; i++) &#123;</div><div class="line">        // 取出成员变量</div><div class="line">        //        Ivar ivar = *(ivars + i);</div><div class="line">        Ivar ivar = ivars[i];</div><div class="line">        </div><div class="line">        // 打印成员变量名字</div><div class="line">        XMGLog(@&quot;%s %s&quot;, ivar_getName(ivar), ivar_getTypeEncoding(ivar));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 释放</div><div class="line">    free(ivars);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="2-遍历所有属性"><a href="#2-遍历所有属性" class="headerlink" title="2.遍历所有属性"></a>2.遍历所有属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">+ (void)initialize</div><div class="line">&#123;</div><div class="line">    unsigned int count = 0;</div><div class="line">    </div><div class="line">    objc_property_t *properties = class_copyPropertyList([UITextField class], &amp;count);</div><div class="line">    </div><div class="line">    for (int i = 0; i&lt;count; i++) &#123;</div><div class="line">        // 取出属性</div><div class="line">        objc_property_t property = properties[i];</div><div class="line">        </div><div class="line">        // 打印属性名字</div><div class="line">        XMGLog(@&quot;%s   &lt;----&gt;   %s&quot;, property_getName(property), property_getAttributes(property));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    free(properties);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;首先包含runtime头文件&quot;&gt;&lt;a href=&quot;#首先包含runtime头文件&quot; class=&quot;headerlink&quot; title=&quot;首先包含runtime头文件&quot;&gt;&lt;/a&gt;首先包含runtime头文件&lt;/h1&gt;&lt;figure class=&quot;highlight 
-    
-    </summary>
-    
-      <category term="Objective-C" scheme="http://ltx.host/categories/Objective-C/"/>
-    
-    
-      <category term="Runtime" scheme="http://ltx.host/tags/Runtime/"/>
-    
-      <category term="iOS" scheme="http://ltx.host/tags/iOS/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Swift基本语法之闭包</title>
     <link href="http://ltx.host/20170208/SwiftClosures/"/>
     <id>http://ltx.host/20170208/SwiftClosures/</id>
@@ -535,6 +507,34 @@
       <category term="Swift" scheme="http://ltx.host/tags/Swift/"/>
     
       <category term="闭包" scheme="http://ltx.host/tags/%E9%97%AD%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS Runtime 获取成员变量</title>
+    <link href="http://ltx.host/20170208/RuntimeGet/"/>
+    <id>http://ltx.host/20170208/RuntimeGet/</id>
+    <published>2017-02-08T12:05:41.000Z</published>
+    <updated>2017-02-09T15:30:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="首先包含runtime头文件"><a href="#首先包含runtime头文件" class="headerlink" title="首先包含runtime头文件"></a>首先包含runtime头文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;objc/runtime.h&gt;</div></pre></td></tr></table></figure>
+<p>以UITextField为例</p>
+<h2 id="1-遍历所有成员变量"><a href="#1-遍历所有成员变量" class="headerlink" title="1.遍历所有成员变量"></a>1.遍历所有成员变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">+ (void)initialize</div><div class="line">&#123;</div><div class="line">      unsigned int count = 0;</div><div class="line">    </div><div class="line">    // 拷贝出所有的成员变量列表</div><div class="line">    Ivar *ivars = class_copyIvarList([UITextField class], &amp;count);</div><div class="line">    </div><div class="line">    for (int i = 0; i&lt;count; i++) &#123;</div><div class="line">        // 取出成员变量</div><div class="line">        //        Ivar ivar = *(ivars + i);</div><div class="line">        Ivar ivar = ivars[i];</div><div class="line">        </div><div class="line">        // 打印成员变量名字</div><div class="line">        XMGLog(@&quot;%s %s&quot;, ivar_getName(ivar), ivar_getTypeEncoding(ivar));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 释放</div><div class="line">    free(ivars);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-遍历所有属性"><a href="#2-遍历所有属性" class="headerlink" title="2.遍历所有属性"></a>2.遍历所有属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">+ (void)initialize</div><div class="line">&#123;</div><div class="line">    unsigned int count = 0;</div><div class="line">    </div><div class="line">    objc_property_t *properties = class_copyPropertyList([UITextField class], &amp;count);</div><div class="line">    </div><div class="line">    for (int i = 0; i&lt;count; i++) &#123;</div><div class="line">        // 取出属性</div><div class="line">        objc_property_t property = properties[i];</div><div class="line">        </div><div class="line">        // 打印属性名字</div><div class="line">        XMGLog(@&quot;%s   &lt;----&gt;   %s&quot;, property_getName(property), property_getAttributes(property));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    free(properties);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;首先包含runtime头文件&quot;&gt;&lt;a href=&quot;#首先包含runtime头文件&quot; class=&quot;headerlink&quot; title=&quot;首先包含runtime头文件&quot;&gt;&lt;/a&gt;首先包含runtime头文件&lt;/h1&gt;&lt;figure class=&quot;highlight 
+    
+    </summary>
+    
+      <category term="Objective-C" scheme="http://ltx.host/categories/Objective-C/"/>
+    
+    
+      <category term="Runtime" scheme="http://ltx.host/tags/Runtime/"/>
+    
+      <category term="iOS" scheme="http://ltx.host/tags/iOS/"/>
     
   </entry>
   

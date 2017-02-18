@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="Mr.Liu">
 <meta property="og:description" content="Swift基础知识介绍">
 <meta property="og:image" content="http://oe7kg4fev.bkt.clouddn.com/17-2-18/93739555-file_1487406097178_5efb.png">
-<meta property="og:updated_time" content="2017-02-18T08:34:58.000Z">
+<meta property="og:updated_time" content="2017-02-18T08:40:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift基础知识(三) 高级篇">
 <meta name="twitter:description" content="Swift基础知识介绍">
@@ -204,7 +204,7 @@
             </figure>
 <p>本文主要介绍Swift中循环引用、可选链使用、协议的使用、懒加载、闭包等内容</p>
 <a id="more"></a>
-<h1 id="循环引用问题"><a href="#循环引用问题" class="headerlink" title="循环引用问题"></a>循环引用问题</h1><h2 id="自动引用计数"><a href="#自动引用计数" class="headerlink" title="自动引用计数"></a>自动引用计数</h2><h3 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h3><p>•    Swift和OC一样,采用自动引用计数来管理内容<br>◦    当有一个强引用指向某一个动向时,该对象的引用计数会自动+1<br>◦    当该强引用消失时,引用计数会自动-1<br>◦    当引用计数为0时,该对象会被销毁</p>
+<h1 id="循环引用问题"><a href="#循环引用问题" class="headerlink" title="循环引用问题"></a>循环引用问题</h1><h2 id="自动引用计数"><a href="#自动引用计数" class="headerlink" title="自动引用计数"></a>自动引用计数</h2><h3 id="工作机制"><a href="#工作机制" class="headerlink" title="工作机制"></a>工作机制</h3><p>•    Swift和OC一样,采用自动引用计数来管理内容<br>◦    当有一个强引用指向某一个动向时,该对象的引用计数会自动 +1<br>◦    当该强引用消失时,引用计数会自动 -1<br>◦    当引用计数为0时,该对象会被销毁</p>
 <h3 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h3><p>•    在通常情况下,ARC是会自动帮助我们管理内存的<br>•    但是在开发中我们经常会出现循环引用的问题,比如下面的示例<br>◦    Student对Book对象有一个强引用<br>◦    而Book对Student有一个强引用<br>◦    在两个对象都指向nil时,依然不会被销毁,就形成了循环引用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">// 1.创建类</div><div class="line">class Student &#123;</div><div class="line">    var book : Book?</div><div class="line"></div><div class="line">    deinit &#123;</div><div class="line">        print(&quot;Student -- deinit&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Book &#123;</div><div class="line">    var owner : Student?</div><div class="line"></div><div class="line">    deinit &#123;</div><div class="line">        print(&quot;Book -- deinit&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2.创建对象</div><div class="line">var stu : Student? = Student()</div><div class="line">var book : Book? = Book()</div><div class="line"></div><div class="line">// 3.相互引用</div><div class="line">stu?.book = book</div><div class="line">book?.owner = stu</div><div class="line"></div><div class="line">// 4.对象置nil</div><div class="line">stu = nil</div><div class="line">book = nil</div><div class="line"></div><div class="line">发现对象并没有被释放</div></pre></td></tr></table></figure>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><code>1.</code> swift提供了两种解决方案<br><code>2.</code>    weak : 和OC中的<strong>weak一样是一个弱引用.当指向的对象销毁时,会自动将指针指向nil<br><code>3.</code>    unowned : 和OC中的</strong>unsafe_unretained.当对象销毁时依然指向原来的位置(容易引起野指针)</p>
@@ -253,7 +253,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-02-18T08:34:58.000Z" itemprop="dateUpdated">2017年2月18日 16:34</time>
+    最后更新时间：<time datetime="2017-02-18T08:40:41.000Z" itemprop="dateUpdated">2017年2月18日 16:40</time>
 </span><br>
 
 
