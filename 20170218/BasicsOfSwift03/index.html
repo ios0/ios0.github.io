@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Swift基础知识(三) 高级篇 | Mr.Liu | Write the Code. Change the world.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Swift基础">
+    <meta name="description" content="Swift基础知识介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift基础知识(三) 高级篇">
+<meta property="og:url" content="http://ltx.host/20170218/BasicsOfSwift03/index.html">
+<meta property="og:site_name" content="Mr.Liu">
+<meta property="og:description" content="Swift基础知识介绍">
+<meta property="og:updated_time" content="2017-02-18T08:16:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift基础知识(三) 高级篇">
+<meta name="twitter:description" content="Swift基础知识介绍">
+    
+        <link rel="alternative" href="/atom.xml" title="Mr.Liu" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Liu</h5>
+          <a href="mailto:nslog@qq.com" title="nslog@qq.com" class="mail">nslog@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/tiasn" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/tiasn" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://liutianxiang.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                LiuTianXiang
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Swift基础知识(三) 高级篇</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Swift基础知识(三) 高级篇</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-18T07:50:43.000Z" itemprop="datePublished" class="page-time">
+  2017-02-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Swift/">Swift</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#循环引用问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">循环引用问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自动引用计数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">自动引用计数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#循环引用"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">循环引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解决方案"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">解决方案</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#可选链"><span class="post-toc-number">2.</span> <span class="post-toc-text">可选链</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可选连的概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">可选连的概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可选链的使用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">可选链的使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可选链的示例"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">可选链的示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#swift中的访问权限"><span class="post-toc-number">3.</span> <span class="post-toc-text">swift中的访问权限</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-BasicsOfSwift03"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Swift基础知识(三) 高级篇</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月18日 15:50" datetime="2017-02-18T07:50:43.000Z"  itemprop="datePublished">2017-02-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Swift/">Swift</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>本文主要介绍Swift中循环引用、可选链使用、协议的使用、懒加载、闭包等内容</p>
+<a id="more"></a>
+<h1 id="循环引用问题"><a href="#循环引用问题" class="headerlink" title="循环引用问题"></a>循环引用问题</h1><h2 id="自动引用计数"><a href="#自动引用计数" class="headerlink" title="自动引用计数"></a>自动引用计数</h2><p>###工作机制<br>•    Swift和OC一样,采用自动引用计数来管理内容<br>◦    当有一个强引用指向某一个动向时,该对象的引用计数会自动+1<br>◦    当该强引用消失时,引用计数会自动-1<br>◦    当引用计数为0时,该对象会被销毁</p>
+<h3 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h3><p>•    在通常情况下,ARC是会自动帮助我们管理内存的<br>•    但是在开发中我们经常会出现循环引用的问题,比如下面的示例<br>◦    Student对Book对象有一个强引用<br>◦    而Book对Student有一个强引用<br>◦    在两个对象都指向nil时,依然不会被销毁,就形成了循环引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">// 1.创建类</div><div class="line">class Student &#123;</div><div class="line">    var book : Book?</div><div class="line"></div><div class="line">    deinit &#123;</div><div class="line">        print(&quot;Student -- deinit&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Book &#123;</div><div class="line">    var owner : Student?</div><div class="line"></div><div class="line">    deinit &#123;</div><div class="line">        print(&quot;Book -- deinit&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2.创建对象</div><div class="line">var stu : Student? = Student()</div><div class="line">var book : Book? = Book()</div><div class="line"></div><div class="line">// 3.相互引用</div><div class="line">stu?.book = book</div><div class="line">book?.owner = stu</div><div class="line"></div><div class="line">// 4.对象置nil</div><div class="line">stu = nil</div><div class="line">book = nil</div><div class="line"></div><div class="line">发现对象并没有被释放</div></pre></td></tr></table></figure>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>◦    swift提供了两种解决方案<br>▪    weak : 和OC中的<strong>weak一样是一个弱引用.当指向的对象销毁时,会自动将指针指向nil<br>▪    unowned : 和OC中的</strong>unsafe_unretained.当对象销毁时依然指向原来的位置(容易引起野指针)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">// 1.创建类</div><div class="line">class Student &#123;</div><div class="line">    weak var book : Book?</div><div class="line">    // unowned var book : Book = Book()</div><div class="line"></div><div class="line">    deinit &#123;</div><div class="line">        print(&quot;Student -- deinit&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Book &#123;</div><div class="line">    var owner : Student?</div><div class="line"></div><div class="line">    deinit &#123;</div><div class="line">        print(&quot;Book -- deinit&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2.创建对象</div><div class="line">var stu : Student? = Student()</div><div class="line">var book : Book? = Book()</div><div class="line"></div><div class="line">// 3.相互引用</div><div class="line">stu?.book = book!</div><div class="line">book?.owner = stu</div><div class="line"></div><div class="line">// 4.对象置nil</div><div class="line">stu = nil</div><div class="line">book = nil</div></pre></td></tr></table></figure>
+<h1 id="可选链"><a href="#可选链" class="headerlink" title="可选链"></a>可选链</h1><h2 id="可选连的概念"><a href="#可选连的概念" class="headerlink" title="可选连的概念"></a>可选连的概念</h2><p>•    它的可选性体现于请求或调用的目标当前可能为空（nil）<br>◦    如果可选的目标有值，那么调用就会成功；<br>◦    如果选择的目标为空（nil），则这种调用将返回空（nil）<br>•    多次调用被链接在一起形成一个链，如果任何一个节点为空（nil）将导致整个链失效。</p>
+<h2 id="可选链的使用"><a href="#可选链的使用" class="headerlink" title="可选链的使用"></a>可选链的使用</h2><p>◦    在可选类型后面放一个问号，可以定义一个可选链。<br>◦    这一点很像在可选值后面放一个叹号来强制拆得其封包内的值<br>▪    它们的主要的区别在于当可选值为空时可选链即刻失败<br>▪    然而一般的强制解析将会引发运行时错误。<br>◦    因为可选链的结果可能为nil,可能有值.因此它的返回值是一个可选类型.<br>▪    可以通过判断返回是否有值来判断是否调用成功<br>▪    有值,说明调用成功<br>▪    为nil,说明调用失败</p>
+<h2 id="可选链的示例"><a href="#可选链的示例" class="headerlink" title="可选链的示例"></a>可选链的示例</h2><p>•    从可选链中取值<br>◦    示例描述: 人(Person)有一个狗(Dog),狗(Dog)有一个玩具(Toy),玩具有价格(price)<br>◦    使用代码描述上述信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">// 1.定义类</div><div class="line">class Person &#123;</div><div class="line">    var name : String</div><div class="line">    var dog : Dog?</div><div class="line"></div><div class="line">    init(name : String) &#123;</div><div class="line">        self.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Dog &#123;</div><div class="line">    var color : UIColor</div><div class="line">    var toy : Toy?</div><div class="line"></div><div class="line">    init(color : UIColor) &#123;</div><div class="line">        self.color = color</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    func runing() &#123;</div><div class="line">        print(&quot;跑起来&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Toy &#123;</div><div class="line">    var price : Double = 0.0</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 2.创建对象,并且设置对象之间的关系</div><div class="line">// 2.1.创建对象</div><div class="line">let person = Person(name: &quot;小明&quot;)</div><div class="line">let dog = Dog(color: UIColor.yellow)</div><div class="line">let toy = Toy()</div><div class="line">toy.price = 100.0</div><div class="line"></div><div class="line">// 2.2.设置对象之间的关系</div><div class="line">person.dog = dog</div><div class="line">dog.toy = toy</div><div class="line">```	</div><div class="line"></div><div class="line">**需求:获取小明的大黄宠物的玩具价格**</div><div class="line">	◦	取出的值为可选类型,因为可选链中有一个可选类型为nil,则返回nil</div><div class="line">	◦	因此结果可能有值,可能为nil.因此是一个可选类型</div></pre></td></tr></table></figure></p>
+<p>let price = person.dog?.toy?.price<br>print(price) // Optional(100.0)\n<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**需求:给小明的大黄一个新的玩具**</div><div class="line">	◦	相当于给可选类型赋值</div></pre></td></tr></table></figure></p>
+<p>person.dog?.toy = Toy()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**需求:让小明的狗跑起来**</div><div class="line">	◦	如果可选类型有值,则会执行该方法</div><div class="line">	◦	如果可选类型为nil,则该方法不会执行</div></pre></td></tr></table></figure></p>
+<p>person.dog?.runing()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 协议(Protocol)的使用</div><div class="line">## 协议的格式</div><div class="line">•	协议的定义方式与类，结构体，枚举的定义都非常相似</div></pre></td></tr></table></figure></p>
+<p>protocol SomeProtocol {<br>    // 协议方法<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 遵守协议的格式</div></pre></td></tr></table></figure></p>
+<p>class SomeClass: SomeSuperClass, FirstProtocol, AnotherProtocol {<br>    // 类的内容<br>    // 实现协议中的方法<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 协议的基本使用</div><div class="line">•	定义协议和遵守协议</div></pre></td></tr></table></figure></p>
+<p>// 1.定义协议<br>protocol SportProtocol {<br>    func playBasketball()<br>    func playFootball()<br>}</p>
+<p>// 2.遵守协议<br>// 注意:默认情况下在swift中所有的协议方法都是必须实现的,如果不实现,则编译器会报错<br>class Person : SportProtocol {<br>    var name : String?<br>    var age : Int = 0</p>
+<pre><code>// 实现协议中的方法
+func playBasketball() {
+    print(&quot;人在打篮球&quot;)
+}
+
+func playFootball() {
+    print(&quot;人在踢足球&quot;)
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 协议之间的继承</div></pre></td></tr></table></figure></p>
+<p>protocol CrazySportProtocol {<br>    func jumping()<br>}</p>
+<p>protocol SportProtocol : CrazySportProtocol {<br>    func playBasketball()<br>    func playFootball()<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 协议在代理中的使用</div><div class="line">协议继承用于代理设计模式</div></pre></td></tr></table></figure></p>
+<p>protocol BuyTicketProtocol {<br>    func buyTicket()<br>}</p>
+<p>class Person {<br>    // 1.定义协议属性<br>    var delegate : BuyTicketProtocol</p>
+<pre><code>// 2.自定义构造函数
+init (delegate : BuyTicketProtocol) {
+    self.delegate = delegate
+}
+
+// 3.行为
+func goToBeijing() {
+    delegate.buyTicket()
+}
+</code></pre><p>}</p>
+<p>class HuangNiu: BuyTicketProtocol {<br>    func buyTicket() {<br>        print(“买了一张火车票”)<br>    }<br>}</p>
+<p>let p = Person(delegate: HuangNiu())<br>p.goToBeijing()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 协议中方法的可选</div></pre></td></tr></table></figure></p>
+<p>// 1.定义协议<br>@objc protocol SportProtocol {<br>    func playBasketball()</p>
+<pre><code>@objc optional func playFootball()
+</code></pre><p>}</p>
+<p>// 2.遵守协议<br>class Sporter : SportProtocol {<br>    var name : String?<br>    var age : Int = 0</p>
+<pre><code>// 实现协议中的方法
+func playBasketball() {
+    print(&quot;人在打篮球&quot;)
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"># 闭包</div><div class="line">## 闭包的介绍</div><div class="line">•	闭包和OC中的block非常相似:</div><div class="line">◦	OC中的block是匿名的函数</div><div class="line">◦	Swift中的闭包是一个特殊的函数</div><div class="line">◦	block和闭包都经常用于回调</div><div class="line">•	注意:闭包和block一样,第一次使用时可能不习惯它的语法,可以先按照使用简单的闭包,随着学习的深入,慢慢掌握其灵活的运用方法.</div><div class="line"></div><div class="line">## 闭包的使用</div><div class="line">###block的用法回顾</div><div class="line">`1.`	定义网络请求的类</div></pre></td></tr></table></figure></p>
+<pre><code>@interface HttpTool : NSObject
+</code></pre><ul>
+<li>(void)loadRequest:(void (^)())callBackBlock;<br>@end</li>
+</ul>
+<p>@implementation HttpTool</p>
+<ul>
+<li><p>(void)loadRequest:(void (^)())callBackBlock<br>{<br>  dispatch_async(dispatch_get_global_queue(0, 0), ^{</p>
+<pre><code>NSLog(@&quot;加载网络数据:%@&quot;, [NSThread currentThread]);
+
+dispatch_async(dispatch_get_main_queue(), ^{
+    callBackBlock();
+});
+</code></pre><p>  });<br>}<br>@end</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`2.` 进行网络请求,请求到数据后利用block进行回调</div></pre></td></tr></table></figure>
+</li>
+<li><p>(void)touchesBegan:(NSSet<uitouch *=""> <em>)touches withEvent:(UIEvent </em>)event<br>{<br>  [self.httpTool loadRequest:^{</uitouch></p>
+<pre><code>NSLog(@&quot;主线程中,将数据回调.%@&quot;, [NSThread currentThread]);
+</code></pre><p>  }];<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`3.` block写法总结:</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>block的写法:<br>    类型:<br>    返回值(^block的名称)(block的参数)</p>
+<pre><code>值:
+^(参数列表) {
+    // 执行的代码
+};
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 使用闭包代替block</div><div class="line">`1.` 定义网络请求类</div></pre></td></tr></table></figure>
+<p>class HttpTools: NSObject {<br>    func requestData(finishedCallback : @escaping (<em> jsonData : String, </em> age : Int) -&gt; ()) {<br>        // 1.创建全局队列, 发送异步请求<br>        DispatchQueue.global().async {<br>            print(“发送网络请求:(Thread.current)”)</p>
+<pre><code>        DispatchQueue.main.async {
+            print(&quot;回调主线程:\(Thread.current)&quot;)
+
+            finishedCallback(&quot;123&quot;, 30)
+        }
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`2.` 进行网络请求,请求到数据后利用闭包进行回调</div></pre></td></tr></table></figure></p>
+<p>  override func touchesBegan(_ touches: Set<uitouch>, with event: UIEvent?) {<br>        httpTools.requestData { (jsonData :String, age : Int) in<br>            print(“回到控制器,获取到数据”)<br>        }<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`3.` 闭包写法总结:</div></pre></td></tr></table></figure></uitouch></p>
+<p>闭包的写法:<br>    类型:(形参列表)-&gt;(返回值)<br>    技巧:初学者定义闭包类型,直接写()-&gt;().再填充参数和返回值</p>
+<pre><code>值:
+{
+    (形参) -&gt; 返回值类型 in
+    // 执行代码
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`4.` 尾随闭包写法:</div><div class="line">	◦	如果闭包是函数的最后一个参数,则可以将闭包写在()后面</div><div class="line">	◦	如果函数只有一个参数,并且这个参数是闭包,那么()可以不写</div></pre></td></tr></table></figure>
+<p>  httpTool.loadRequest() {<br>        print(“回到主线程”, NSThread.currentThread());<br>    }</p>
+<pre><code> // 开发中建议该写法
+httpTool.loadRequest {
+   print(&quot;回到主线程&quot;, NSThread.currentThread());
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">### 闭包的循环引用</div><div class="line">•	如果在HttpTool中有对闭包进行强引用,则会形成循环引用</div><div class="line">•	补充:在Swift中检测一个对象是否销毁,可以实现对象的deinit函数</div></pre></td></tr></table></figure>
+<pre><code>// 析构函数(相当于OC中dealloc方法)
+deinit {
+    print(&quot;ViewController----deinit&quot;)
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 循环引用的(实现)</div><div class="line">	◦	该实现是为了产生循环引用,而产生的循环引用</div></pre></td></tr></table></figure>
+<p>class HttpTools: NSObject {</p>
+<pre><code>var finishedCallback : ((_ jsonData : String, _ age : Int) -&gt; ())?
+
+func requestData(finishedCallback : @escaping (_ jsonData : String, _ age : Int) -&gt; ()) {
+    self.finishedCallback = finishedCallback
+
+    // 1.创建全局队列, 发送异步请求
+    DispatchQueue.global().async {
+        print(&quot;发送网络请求:\(Thread.current)&quot;)
+
+        DispatchQueue.main.async {
+            print(&quot;回调主线程:\(Thread.current)&quot;)
+
+            finishedCallback(&quot;123&quot;, 30)
+        }
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">### swift中解决循环引用的方式</div><div class="line">`1.` 方案一:</div><div class="line">◦	使用weak,对当前控制器使用弱引用</div><div class="line">◦	但是因为self可能有值也可能没有值,因此weakSelf是一个可选类型,在真正使用时可以对其强制解包(该处强制解包没有问题,因为控制器一定存在,否则无法调用所在函数)</div></pre></td></tr></table></figure></p>
+<p>// 解决方案一:<br>    weak var weakSelf = self<br>    httpTool.loadData {<br>        print(“加载数据完成,更新界面:”, NSThread.currentThread())<br>        weakSelf!.view.backgroundColor = UIColor.redColor()<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`2.` 方案二:</div><div class="line">	◦	和方案一类型,只是书写方式更加简单</div><div class="line">	◦	可以写在闭包中,并且在闭包中用到的self都是弱引用</div></pre></td></tr></table></figure></p>
+<pre><code>    httpTool.loadData {[weak self] () -&gt; () in
+    print(&quot;加载数据完成,更新界面:&quot;, NSThread.currentThread())
+    self!.view.backgroundColor = UIColor.redColor()
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">`3.` 方案三:(常用)</div><div class="line">	◦	使用关键字unowned</div><div class="line">	◦	从行为上来说 unowned 更像OC中的 unsafe_unretained</div><div class="line">	◦	unowned 表示:即使它原来引用的对象被释放了，仍然会保持对被已经释放了的对象的一个 &quot;无效的&quot; 引用，它不能是 Optional 值，也不会被指向 nil</div></pre></td></tr></table></figure>
+</code></pre><p>httpTool.loadData {[unowned self] () -&gt; () in<br>        print(“加载数据完成,更新界面:”, NSThread.currentThread())<br>        self.view.backgroundColor = UIColor.redColor()<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># 懒加载</div><div class="line">## 懒加载的介绍</div><div class="line">•	swift中也有懒加载的方式</div><div class="line">◦	(苹果的设计思想:希望所有的对象在使用时才真正加载到内存中)</div><div class="line">•	和OC不同的是swift有专门的关键字来实现懒加载</div><div class="line">•	lazy关键字可以用于定义某一个属性懒加载</div><div class="line"></div><div class="line">## 懒加载的使用</div><div class="line">格式:</div></pre></td></tr></table></figure></p>
+<p>lazy var 变量: 类型 = { 创建变量代码 }()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">懒加载的使用</div></pre></td></tr></table></figure></p>
+<p> // 懒加载的本质是,在第一次使用的时候执行闭包,将闭包的返回值赋值给属性<br>    // lazy的作用是只会赋值一次<br>    lazy var array : [String] = {<br>        () -&gt; [String] in<br>        return [“why”, “lmj”, “lnj”]<br>    }()<br>```</p>
+<h1 id="swift中的访问权限"><a href="#swift中的访问权限" class="headerlink" title="swift中的访问权限"></a>swift中的访问权限</h1><p>Swift 中的访问控制模型基于模块和源文件这两个概念<br>    ◦    internal : 在本模块中都可以进行访问<br>    ◦    fileprivate : 在当前源文件中可以访<br>    ◦    private : 在当前class中可以访问(extension中也不可以访问)<br>    ◦    public : 在其他模块中可以访问</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-18T08:16:44.000Z" itemprop="dateUpdated">2017年2月18日 16:16</time>
+</span><br>
+
+
+        自由转载-非商用-非衍生-保持署名|Mr.Liu ：<a href="/20170218/BasicsOfSwift03/" target="_blank" rel="external">http://ltx.host/20170218/BasicsOfSwift03/</a>
+    </div>
+    <footer>
+        <a href="http://ltx.host">
+            <img src="/img/avatar.jpg" alt="Mr.Liu">
+            Mr.Liu
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift基础/">Swift基础</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ltx.host/20170218/BasicsOfSwift03/&title=《Swift基础知识(三) 高级篇》 — Mr.Liu&pic=http://ltx.host/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ltx.host/20170218/BasicsOfSwift03/&title=《Swift基础知识(三) 高级篇》 — Mr.Liu&source=本文主要介绍Swift中循环引用、可选链使用、协议的使用、懒加载、闭包等内容" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ltx.host/20170218/BasicsOfSwift03/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Swift基础知识(三) 高级篇》 — Mr.Liu&url=http://ltx.host/20170218/BasicsOfSwift03/&via=http://ltx.host" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ltx.host/20170218/BasicsOfSwift03/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/20170217/UITextViewCus/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">UITextView 自定义显示效果和链接</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="BasicsOfSwift03" data-title="Swift基础知识(三) 高级篇" data-url="http://ltx.host/20170218/BasicsOfSwift03/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'liutianxiang', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            <span>博客内容遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Mr.Liu &copy; 2012 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://ltx.host/20170218/BasicsOfSwift03/&title=《Swift基础知识(三) 高级篇》 — Mr.Liu&pic=http://ltx.host/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ltx.host/20170218/BasicsOfSwift03/&title=《Swift基础知识(三) 高级篇》 — Mr.Liu&source=本文主要介绍Swift中循环引用、可选链使用、协议的使用、懒加载、闭包等内容" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://ltx.host/20170218/BasicsOfSwift03/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Swift基础知识(三) 高级篇》 — Mr.Liu&url=http://ltx.host/20170218/BasicsOfSwift03/&via=http://ltx.host" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://ltx.host/20170218/BasicsOfSwift03/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABu0lEQVR42u3awW7DIBAE0Pz/T7vXSm3cGTCESo9TlTr2iw8rZtnXK17Xj3X/3+/XJJ88vHBxcae51+1KHnn/4ORbiQEXF3c/N3lMXlVyXG7AxcU9mftui/PuZ4zdExcX9z9yc0pyB1xc3DO5yWYl5x6R1XBxcSe4eZdy3d9L+ru4uLhD3KtcSWGauf6Pu+Hi4m7h5gUl39a0xyr1c3Fxcbdwn40rLbod9cDFxd3PbY9P8nGrZOuTvAhcXNzV3HYkq2103r+huizi4uJu4c43RpPty9iLiMIPLi7uFm47eJHsm1pEfdyCi4u7mNtGlzzS5GUuD1S4uLiruTMBZqbl0d4NFxd3NfepKNJC29ENXFzcndx5Sn7E0l4TtUpxcXGXcccao/lqi1cxR4aLi7uY20aUNvyMHdP+8uJwcXG3c2faFlOd2nigExcXdzX3Kld+6JLHqvxn4OLi7uG2AaaNLmNDHvVgFi4u7gJuGz/yRkYbe6Iyh4uLu5HbFpo22Dyc1XBxcY/kJs3WPBoVhze4uLgHc8eIYyVv6xYHFxd34iCkjS5tCcPFxf0sd6y52Za/sTbrVH8XFxd3hPsFFDEgHiyWJhAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
